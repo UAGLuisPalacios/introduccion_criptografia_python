@@ -111,20 +111,6 @@ class Archivos:
 class GeneradorLlaves:
 	alfabetos = {}
 
-	def llaves(self, lineas):
-		#print(" ")
-		#print("Llaves para probar: ")
-		for llave in lineas:
-			self.alfabetos.update({len(self.alfabetos):list(llave)})
-		item = "\n"
-		for key,values in self.alfabetos.iteritems():
-			if item in values:
-				self.alfabetos[key].remove(""+item)
-			#print (key, values)
-		#print(" ")
-		return self.alfabetos
-
-
 	def sustituirlocal(self, LLAVE, lineas, index):
 		CRIBA = "SISTEMASCREADOS"
 		self.newline=""
@@ -181,6 +167,27 @@ class GeneradorLlaves:
 		print "TIEMPO UTILIZADO: " + str(end - start)
 		print " "
 		print " "
+
+	def permutacionAlfabeto(self, letras, mensaje):
+		posiciones = []
+		PERMUTACION = ALFABETO
+		for caracter in letras:
+			posiciones.append(ALFABETO.index(caracter))
+
+		for y in itertools.permutations(letras):
+			n=0
+			for caracter in posiciones:
+				#print y[n]
+				PERMUTACION[caracter]= y[n]
+				n+=1
+
+			print PERMUTACION
+			#hacer sustitucion
+			#print PERMUTACION
+			PERMUTACION = ALFABETO
+			pass
+		pass
+
 
 
 class Estadisticas:
