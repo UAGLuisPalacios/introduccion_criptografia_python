@@ -110,11 +110,67 @@ class Archivos:
 
 class GeneradorLlaves:
 	alfabetos = {}
+	ABECEDARIO = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+
+
+	def testlocal(self, LLAVE, lineas, index):
+		#print self.ABECEDARIO
+		CRIBA = "LLERO"
+		self.newline=""
+		tabla = dict(zip(self.ABECEDARIO,LLAVE))
+		for linea in lineas:
+			self.newline=""
+			for caracter in linea:
+				if caracter in LLAVE:
+					value = tabla[""+caracter]
+					self.newline+=value
+				else:
+					self.newline+=caracter
+			resultado = self.newline.find(CRIBA)
+			#print resultado
+			if (resultado!=-1):
+				print " "
+				print " "
+				print "LLAVE: " + str(LLAVE)
+				print "index: " + str(index) + ", " +self.newline
+				#print " "
+				#print "TEXTO DESCIFRADO:"
+				#print " "
+				#for linea in lineas:
+				#	self.newline=""
+				#	for caracter in linea:
+				#		if caracter in LLAVE:
+				#			value = tabla[""+caracter]
+				#			self.newline+=value
+				#		else:
+				#			self.newline+=caracter
+				#	print self.newline
+				#return
+
+	def permutacionAlfabeto(self, letras, mensaje):
+		print mensaje
+		print " "
+		print " "
+		posiciones = []
+		PERMUTACION = ALFABETO
+		h = 0
+		for caracter in letras:
+			posiciones.append(ALFABETO.index(caracter))
+
+		for y in itertools.permutations(letras):
+			n=0
+			h+=1
+			for caracter in posiciones:
+				PERMUTACION[caracter]= y[n]
+				n+=1
+			self.testlocal(PERMUTACION,mensaje,h)
+			PERMUTACION = ALFABETO
 
 	def sustituirlocal(self, LLAVE, lineas, index):
-		CRIBA = "SISTEMASCREADOS"
+		print self.ABECEDARIO
+		CRIBA = "CABALLERO"
 		self.newline=""
-		tabla = dict(zip(ALFABETO,LLAVE))
+		tabla = dict(zip(self.ABECEDARIO,LLAVE))
 		#print "PERMUTACION: " + str(tabla)
 		#print LLAVE
 		for linea in lineas:
@@ -154,39 +210,14 @@ class GeneradorLlaves:
 		n=0
 		for x in itertools.permutations('ABCDEFGHIJKLMNOPQRSTUVWXYZ'[0:corte]):
 			tupla_abecedario = x + abecedario_estatico
-			#self.alfabetos.update({len(self.alfabetos):list(tupla_abecedario)})
 			self.sustituirlocal(tupla_abecedario, lineas, n)
 			n+=1
-		#for key,values in self.alfabetos.iteritems():
-			#print (key, values)
-		#print(" ")
-		#return self.alfabetos
 		end = time.time()
 		print " "
 		print " "
 		print "TIEMPO UTILIZADO: " + str(end - start)
 		print " "
 		print " "
-
-	def permutacionAlfabeto(self, letras, mensaje):
-		posiciones = []
-		PERMUTACION = ALFABETO
-		for caracter in letras:
-			posiciones.append(ALFABETO.index(caracter))
-
-		for y in itertools.permutations(letras):
-			n=0
-			for caracter in posiciones:
-				#print y[n]
-				PERMUTACION[caracter]= y[n]
-				n+=1
-
-			print PERMUTACION
-			#hacer sustitucion
-			#print PERMUTACION
-			PERMUTACION = ALFABETO
-			pass
-		pass
 
 
 
