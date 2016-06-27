@@ -12,7 +12,7 @@ mensaje = texto.lineas("textos/permutaciones/test")
 #tabla = frecuencia.analizarfrecuencia(mensaje)
 #tabla = frecuencia.analizarpares(mensaje)
 
-letras = tuple('ACDELORT')
+letras = tuple('AEIOQRU')
 #ACDELOR -> LLERO:
 #LLAVE: ['D', 'B', 'R', 'A', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'C', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 #index: 2050, ALABTCONIBOSPCOGCEMERLASDIGITELASANALLEROCETOCIONEBIONEL
@@ -25,4 +25,4 @@ letras = tuple('ACDELORT')
 
 #ABDELNOR
 #ABCDELNORS
-generador.permutacionAlfabeto(letras, mensaje)
+generador.permutacionAlfabeto(letras, mensaje, "UIERA")

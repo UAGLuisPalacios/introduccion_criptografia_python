@@ -112,10 +112,28 @@ class GeneradorLlaves:
 	alfabetos = {}
 	ABECEDARIO = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
 
+	def testclave(self, LLAVE, lineas):
+		tabla = dict(zip(self.ABECEDARIO,LLAVE))
+		print " "
+		print " "
+		print "LLAVE: " + str(LLAVE)
+		#print "index: " + str(index) + ", " +self.newline
+		print " "
+		print "TEXTO DESCIFRADO:"
+		print " "
+		for linea in lineas:
+			self.newline=""
+			for caracter in linea:
+				if caracter in LLAVE:
+					value = tabla[""+caracter]
+					self.newline+=value
+				else:
+					self.newline+=caracter
+			print self.newline
+		#return
 
-	def testlocal(self, LLAVE, lineas, index):
+	def testlocal(self, LLAVE, lineas, index, CRIBA):
 		#print self.ABECEDARIO
-		CRIBA = "LLERO"
 		self.newline=""
 		tabla = dict(zip(self.ABECEDARIO,LLAVE))
 		for linea in lineas:
@@ -147,7 +165,7 @@ class GeneradorLlaves:
 				#	print self.newline
 				#return
 
-	def permutacionAlfabeto(self, letras, mensaje):
+	def permutacionAlfabeto(self, letras, mensaje, CRIBA):
 		print mensaje
 		print " "
 		print " "
@@ -163,7 +181,7 @@ class GeneradorLlaves:
 			for caracter in posiciones:
 				PERMUTACION[caracter]= y[n]
 				n+=1
-			self.testlocal(PERMUTACION,mensaje,h)
+			self.testlocal(PERMUTACION,mensaje,h, CRIBA)
 			PERMUTACION = ALFABETO
 
 	def sustituirlocal(self, LLAVE, lineas, index):
